@@ -23,28 +23,44 @@ let score = 0;
 //create our questions
 let questions = [
 	{
-		question : "What does HTML stand for?",
-		imgSrc : "img/html.png",
-		choiceA : "Correct",
-		choiceB : "Wrong",
-		choiceC : "Wrong",
+		question : "What command would you use to create a new VM in the CLI?",
+		imgSrc : "img/ComputeEngine.png",
+		choiceA : "gcloud compute instances create <VM Name>",
+		choiceB : "gcloud instances compute create <VM Name>",
+		choiceC : "gcloud machines compute create <VM Name>",
 		correct : "A",
 	},
 	{
-		question : "What does CSS stand for?",
-		imgSrc : "img/css.png",
-		choiceA : "Wrong",
-		choiceB : "Correct",
-		choiceC : "Wrong",
+		question : "How would you create a load balancer frontend for a Kubernetes deployment in GKE?",
+		imgSrc : "img/KubernetesEngine.png",
+		choiceA : "gcloud expose deployment <deployment name> --type LoadBalancer --port 8080",
+		choiceB : "kubectl expose deployment <deployment name> --type LoadBalancer --port 8080",
+		choiceC : "kubectl create frontend deployment <deployment name> --type LoadBalancer --port 8080",
 		correct : "B",
 	},
 	{
-		question : "What does JS stand for?",
-		imgSrc : "img/js.png",
-		choiceA : "Wrong",
-		choiceB : "Wrong",
-		choiceC : "Correct",
+		question : "Select the correct response",
+		imgSrc : "img/KubernetesEngine.png",
+		choiceA : "When you create a GKE cluster, you cannot define the machine type of the node",
+		choiceB : "A container can contain only a single pod",
+		choiceC : "The target number of pods for your app is defined in the deplyoment object as the number of replicas in the replica set",
 		correct : "C",
+	},
+	{
+		question : "Which is not true of network load balancing?",
+		imgSrc : "img/CloudLoadBalancing.png",
+		choiceA : "Network load balancing allows you to balance internal requests between VMs in your VPC",
+		choiceB : "A network load balancer can balance HTTP/HTTPS requests between VMs in you VPC",
+		choiceC : "A network load balancer can restart un-healthy VMs",
+		correct : "B",
+	},
+		{
+		question : "You have created a HTTP load balancer for your VM pool, however the http health check is failing even though the VMs are running properly. What might be the issue?",
+		imgSrc : "img/CloudLoadBalancing.png",
+		choiceA : "You haven't created a firewall rule to allow TCP traffic to your VMs on port 80",
+		choiceB : "GCP is broken and you need to submit a ticket to Google",
+		choiceC : "You have used a network load balancer when you should have used a HTTP/HTTPS load balancer",
+		correct : "A",
 	},
 ];
 
@@ -67,6 +83,8 @@ function renderQuestion(){
 start.addEventListener("click", startQuiz);
 
 function startQuiz(){
+	document.getElementById("banner").style.display = "none";
+	document.getElementById("welcome").style.display = "none";
 	runningQuestion =0;
 	start.style.display = "none";
 	renderQuestion();
@@ -148,6 +166,6 @@ function scoreRender () {
 			  (scorePerCent >= 20) ? "img/2.png" : "img/1.png"
 
 	scoreDiv.innerHTML = "<img src=" + img + ">";
-	scoreDiv.innerHTML += "<p>" + scorePerCent + "%</p>";
+	scoreDiv.innerHTML += "<p>Your score = " + scorePerCent + "%</p>";
 	reset.innerHTML = "Try Again";
 }
