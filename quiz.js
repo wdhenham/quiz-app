@@ -64,6 +64,8 @@ let questions = [
 	},
 ];
 
+app.getElementsByTagName('')
+
 //create some variables
 
 const lastQuestion = questions.length - 1;
