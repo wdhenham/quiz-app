@@ -1,6 +1,5 @@
 runtime: nodejs10
 api_version: 1
-threa
 
 handlers:
 - url: /
